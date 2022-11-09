@@ -1,0 +1,20 @@
+To Do
+
+Nov 9
+--Create properties for Player class
+    --Name
+    --Score
+
+--Create properties for Board class
+    --get current phrase
+    --phrase w/ blanks
+    --letters guessed
+
+--Create spinner class
+    --gets score/$
+
+--Create runner/main class
+
+Works on game mechanics if time permits
+    --Update board everytime letter is guessed
+    --Make blank string
