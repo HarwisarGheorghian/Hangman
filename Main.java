@@ -7,13 +7,18 @@ public class Main {
         int playerCount = sc.nextInt();
         Player[] players = new Player[playerCount]; 
         for(int i = 0; i < playerCount; i++){
-            System.out.println("What is your name Player " + i++);
+            System.out.println("What is your name Player " + i);
             String name = sc.nextLine();
             players[i] = new Player(name);
         }
+        Board board = new Board();
         while(true){ //game loop
-            for(int i = 0; i < players.length; i){
+            System.out.println("Here is the board!");
+            System.out.println(board);
+            for(int i = 0; i < players.length; i++){
                 System.out.println("");
+                String guess = players[i].guess();
+                board.setGuess(guess);
             }
         }        
     }
