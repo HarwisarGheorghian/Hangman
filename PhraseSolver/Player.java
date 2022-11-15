@@ -4,9 +4,9 @@ public class Player {
     private String name;
     private int score;
 
-    public Player(String Name, int dollars){
+    public Player(String Name){
         name = Name;
-        score = dollars;
+        score = 0;
     }
 
     public void setScore(int scores){

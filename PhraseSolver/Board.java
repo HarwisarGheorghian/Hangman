@@ -20,7 +20,7 @@ public class Board{
       try 
       {
       
-        Scanner sc = new Scanner(new File(/*Replace with the path*/"/workspace/Java-code/PhraseSolver/phrases.txt"));
+        Scanner sc = new Scanner(new File("/workspace/Hangman/PhraseSolver/phrases.txt"));
         while (sc.hasNextLine())
         {
           tempPhrase = sc.nextLine().trim();
@@ -33,7 +33,7 @@ public class Board{
       try 
       {
         int count = 0;
-        Scanner sc = new Scanner(new File(/*Replace with the path*/"/workspace/Java-code/PhraseSolver/phrases.txt"));
+        Scanner sc = new Scanner(new File("/workspace/Hangman/PhraseSolver/phrases.txt"));
         while (sc.hasNextLine())
         {
           count++;
@@ -46,5 +46,10 @@ public class Board{
       } catch (Exception e) { System.out.println("Error reading or parsing phrases.txt"); }
 
       return tempPhrase;
-    } 
+    }
+
+    public String toString(){
+      String emptyString = new String(new char[word.length()]).replace("\0", "_");
+      return emptyString;
+    }
 }
