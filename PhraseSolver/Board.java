@@ -5,10 +5,19 @@ public class Board{
 
   String word = loadPhrase(); 
   int guessedCount;
+  private String guessCharacter;
 
 
   public Board(){
     
+  }
+
+  public void setGuess(String guess){
+    guessCharacter = guess;
+  }
+
+  public String getGuess(){
+    return guessCharacter;
   }
 
   private String loadPhrase(){
@@ -36,7 +45,7 @@ public class Board{
         Scanner sc = new Scanner(new File("/workspace/Hangman/PhraseSolver/phrases.txt"));
         while (sc.hasNextLine())
         {
-          count++;
+          count++; 
           String temp = sc.nextLine().trim();
           if (count == randomInt)
           {
@@ -46,10 +55,23 @@ public class Board{
       } catch (Exception e) { System.out.println("Error reading or parsing phrases.txt"); }
 
       return tempPhrase;
+  }
+
+  public String toString(){
+    String emptyString = "";
+    for(int i = 0; i < word.length(); i++){
+      if(word.substring(i, i+1).equals(" ")){
+        emptyString += " ";
+      } else {
+        emptyString += "_";
+      }
     }
 
-    public String toString(){
-      String emptyString = new String(new char[word.length()]).replace("\0", "_");
-      return emptyString;
+    if(word.contains(guessCharacter)){
+      for(int i = 0; i < word.length(); i++){
+        System.out.println("");
+      }
     }
+      return emptyString; 
+  }
 }

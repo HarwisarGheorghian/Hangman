@@ -1,4 +1,5 @@
 package PhraseSolver;
+import java.util.Scanner;
 
 public class Player {
     private String name;
@@ -7,7 +8,7 @@ public class Player {
     public Player(String Name){
         name = Name;
         score = 0;
-    }nn,n
+    }
 
     public void setScore(int scores){
         score = scores;
@@ -23,5 +24,12 @@ public class Player {
 
     public void setName(String newName){
         name = newName;
+    }
+
+    public String guess(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("What is your guess?");
+        String Guess = sc.nextLine();
+        return Guess;    
     }
 }
