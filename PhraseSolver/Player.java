@@ -7,7 +7,7 @@ public class Player {
     public Player(String Name){
         name = Name;
         score = 0;
-    }
+    }nn,n
 
     public void setScore(int scores){
         score = scores;
