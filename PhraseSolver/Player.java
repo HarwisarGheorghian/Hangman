@@ -28,7 +28,6 @@ public class Player {
 
     public String guess(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("What is your guess?");
         String Guess = sc.nextLine();
         return Guess;    
     }

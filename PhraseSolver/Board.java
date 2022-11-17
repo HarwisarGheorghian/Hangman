@@ -3,14 +3,24 @@ import java.util.Scanner;
 import java.io.File;
 public class Board{
 
-  String word = loadPhrase(); 
+  private String word = loadPhrase(), checkedString = word; 
   int guessedCount;
   private String guessCharacter;
+  String emptyString = "";
+
 
 
   public Board(){
-    
+    guessCharacter = "";
+    for(int i = 0; i < word.length(); i++){
+      if(word.substring(i, i+1).equals(" ")){
+        emptyString += " ";
+      } else {
+        emptyString += "_";
+      }
+    }
   }
+
 
   public void setGuess(String guess){
     guessCharacter = guess;
@@ -18,6 +28,14 @@ public class Board{
 
   public String getGuess(){
     return guessCharacter;
+  }
+
+  public int getCounter(){
+    return guessedCount;
+  }
+
+  public void setCounter(int count){
+    guessedCount = count;
   }
 
   private String loadPhrase(){
@@ -56,22 +74,28 @@ public class Board{
 
       return tempPhrase;
   }
+  public Boolean end(){
+    if(checkedString.length() == 0){
+      return true;
+    }
+    return false;
+  }
 
   public String toString(){
-    String emptyString = "";
-    for(int i = 0; i < word.length(); i++){
-      if(word.substring(i, i+1).equals(" ")){
-        emptyString += " ";
-      } else {
-        emptyString += "_";
+    
+    int counter = 0;
+    if(checkedString.contains(guessCharacter)){
+      for(int i = 0; i < emptyString.length(); i++){
+        if(word.substring(i, i+1).equals(guessCharacter)){
+          emptyString = emptyString.substring(0, i) + guessCharacter + emptyString.substring(i + 1);
+          counter++;
+        }
       }
+      checkedString = checkedString.replace(guessCharacter, "");
+      guessedCount = counter;
     }
-
-    if(word.contains(guessCharacter)){
-      for(int i = 0; i < word.length(); i++){
-        System.out.println("");
-      }
-    }
-      return emptyString; 
+    return emptyString; 
   }
 }
+
+

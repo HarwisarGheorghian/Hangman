@@ -23,3 +23,6 @@ S1: Make a blank string
 S2: Make the guessing mechanics
     --Guess a consonant
     --If they guess correctly, add all instances of the consonant to the string and add the value they chose with the spinner multipled by the number of instances of the consonant
+S3: Work on scoring mechanics and game over
+    --Create scoring for each Player
+    --Make a counter to check if a player has guessed too many incorrect letters
