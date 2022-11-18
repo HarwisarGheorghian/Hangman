@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import PhraseSolver.*;
 public class Main {
+    //static boolean playerHasMissedTooMuch = false;
+    //static String loserWhoSkippedTooMuch;
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         System.out.println("How many players will be playing?");
@@ -15,20 +17,39 @@ public class Main {
 
 
         Board board = new Board();
-        while(true){ //game loop
+        //while(true){ //game loop
             System.out.println("Here is the board!");
+            //System.out.println("If you miss more than 5 it's game over!");
             System.out.println(board);
-            for(int i = 0; i < players.length; i++){ //we need to iterate through all the players somehow
-                if(board.end()){
-                    break;
+            boolean gameend = false;
+            while(!gameend){
+
+                for(int i = 0; i < players.length; i++){ //we need to iterate through all the players somehow
+                    if(board.end()){
+                        gameend = true;
+                        break;
+                    } /*else if(players[i].getMissed() >= 5){
+                        gameend = true;
+                        //playerHasMissedTooMuch = true;
+                        //loserWhoSkippedTooMuch = players[i].getName();
+                        break;
+                    }*/
+                    System.out.println(players[i].getName() + ": Call your guess!");
+                    String guess = players[i].guess();
+                    board.setGuess(guess);
+                    System.out.println(board.updateBoard());
+                    System.out.println(players[i].getName() + " guessed " + guess + " and got " + board.getCounter() + " points!");
+
+                    /*if(board.getCounter() == 0){
+                        players[i].setMissed(i);
+                        System.out.println(players[i].getName() + " also missed. They have " + players[i].getMissed() + " misses.");
+                    }*/
+
+                    players[i].setScore(players[i].getScore() + board.getCounter());
                 }
-                System.out.println(players[i].getName() + ": Call your guess!");
-                String guess = players[i].guess();
-                board.setGuess(guess);
-                System.out.println(board);
-                System.out.println(players[i].getName() + " guessed " + guess + " and got " + board.getCounter() + " points!");
-                players[i].setScore(players[i].getScore() + board.getCounter());
             }
+
+
             System.out.println("Final Score: ");
             int max = 0;
             String winner = "";
@@ -41,7 +62,13 @@ public class Main {
             }
             System.out.println("The winner is " + winner);
 
-        }        
+                
     }
+
+    /*public static void gameEndScreen(){
+        if(playerHasMissedTooMuch){
+            System.out.println("Uh Oh! " + loserWhoSkippedTooMuch + " had too many wrong guesses. They Lost the Game!")
+        }
+    }*/
 
 }

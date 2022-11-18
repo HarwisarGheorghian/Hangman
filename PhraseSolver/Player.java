@@ -4,10 +4,12 @@ import java.util.Scanner;
 public class Player {
     private String name;
     private int score;
+    //private int missedCount; 
 
     public Player(String Name){
         name = Name;
         score = 0;
+       // missedCount = 0;
     }
 
     public void setScore(int scores){
@@ -26,6 +28,13 @@ public class Player {
         name = newName;
     }
 
+    /*public void setMissed(int miss){
+        missedCount = miss;
+    }
+
+    public int getMissed(){
+        return missedCount;
+    }*/
     public String guess(){
         Scanner sc = new Scanner(System.in);
         String Guess = sc.nextLine();
