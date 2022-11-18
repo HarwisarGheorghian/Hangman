@@ -1,2 +1,2 @@
-# APCS Java-code
-Java Prjocts 
+Hangman Project
+A project made for an assignment in AP CS.
